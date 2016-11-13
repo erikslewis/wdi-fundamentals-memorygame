@@ -1,7 +1,3 @@
-
-
-
-
 var cardOne = "queen";
 var cardtwo = "queen";
 var cardthree = "king";
@@ -28,10 +24,6 @@ var createCards = cards.filter(function(x) {
   }
 })
 
-
-
-	 
-  
 // 
 
 /*if (cardOne === cardtwo) {
