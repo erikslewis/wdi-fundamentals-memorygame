@@ -3,26 +3,118 @@ var cardtwo = "queen";
 var cardthree = "king";
 var cardfour = "king";
 
-var gameBoard = document.getElementById("game-board");
+
+var cards = ['queen', 'queen', 'king', 'king'];
+
+
+var cardsInPlay = [];
 
 
 
-cards = ['cardOne','cardtwo','cardthree','cardfour'];
+var board = document.getElementById('game-board');
 
+function createBoard() {
 
-for (i = 0; i < cards.length; i++){
-	var x = document.createElement("div");
-	x.className="card";
-	gameBoard.appendChild(x);
+  for (var i=0; i<cards.length; i++) {
+   
+    var cardElement = document.createElement('div');
+  
+    cardElement.className = 'card';
+	
+    
+    cardElement.setAttribute('data-card', cards[i]);
+		
+    cardElement.addEventListener('click', isTwoCards);
+
+    
+    board.appendChild(cardElement);
+    board.appendChild(cardElement);
+  }
 
 }
+function isTwoCards() {
+  
+  cardsInPlay.push(this.getAttribute('data-card'));
+	
+	console.log(this.getAttribute('data-card'));
+	if (this.getAttribute('data-card') === 'king') {
+		this.innerHTML = "<img src='http://i.imgur.com/bnuv5Im.png'>"; 
+	} else {
+		this.innerHTML = "<img src='http://i.imgur.com/v6buNt2.png'>"; 
+	}
+ 
+  if (cardsInPlay.length === 2) {
+   
+    isMatch(cardsInPlay);
+    
+    cardsInPlay = [];
+  }
+}
+
+function isMatch(cards) {
+ 
+  if (cards[0] === cards[1]) {
+    alert("You found a match!");
+  } else {
+    alert("Sorry, try again.");
+
+  }
+}
+
+createBoard();
+
+/*ards = ['cardOne','cardtwo','cardthree','cardfour'];
+
+
+
+
+
 
 var createCards = cards.filter(function(x) {
   for (i = 0; i < cards.length; i++)
   if (x[i]['cardOne'] === cardtwo || x[i]['cardthree'] === cardfour) {
       return cards[i];
-  }
-})
+  }})*/
+
+
+
+
+
+  
+
+
+
+
+
+
+
+    
+   
+  
+
+
+
+
+
+   
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // 
 
